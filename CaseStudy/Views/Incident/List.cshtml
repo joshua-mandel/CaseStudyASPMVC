@@ -1,0 +1,51 @@
+﻿@model IncidentsViewModel
+@{
+    ViewData["Title"] = "Incident Manager";
+}
+
+<h2 class="mb-3">Incident Manager</h2>
+<div class="mb-3">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a asp-controller="Incident" asp-action="List" asp-route-id="all" class="nav-link 
+                @(Model.IncidentFilter == "all" ? "active" : "")">All incidents</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Incident" asp-action="List" asp-route-id="unassigned" class="nav-link @(Model.IncidentFilter == "unassigned" ? "active" : "")">Unassigned incidents</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Incident" asp-action="List" asp-route-id="open" class="nav-link @(Model.IncidentFilter == "open" ? "active" : "")">Open incidents</a>
+        </li>
+    </ul>
+</div>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Date Opened</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var incident in Model.Incidents)
+        {
+            <tr>
+                <td>@incident.Title</td>
+                <td>@incident.Customer.FirstName @incident.Customer.LastName</td>
+                <td>@incident.Product.ProductName</td>
+                <td>@incident.DateOpened.ToShortDateString()</td>
+                <td class="text-center"><a class="btn btn-primary" asp-controller="Incident" asp-action="Edit" asp-route-id="@incident.IncidentId">Edit</a></td>
+                <td class="text-center"><a class="btn btn-primary" asp-controller="Incident" asp-action="Delete" asp-route-id="@incident.IncidentId">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a class="btn btn-primary" asp-controller="Incident" asp-action="Add">Add Incident</a>
+</div>

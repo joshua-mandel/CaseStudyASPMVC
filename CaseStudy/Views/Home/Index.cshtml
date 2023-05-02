@@ -1,0 +1,36 @@
+﻿@{
+	ViewData["Title"] = "Home";
+}
+
+<div>
+	<h1 class="mb-3">
+		SportsPro Technical Support
+	</h1>
+	<section>
+		<p>Sports management software for the sports enthusiast</p>
+	</section>
+</div>
+<div class="mb-3">
+	<h1 class="mb-3">
+		Admin
+	</h1>
+	<section>
+		<ul class="list-group">
+			<li class="list-group-item"><a class="text-decoration-none text-black" asp-area="" asp-controller="Product" asp-action="List">Manage Products</a></li>
+			<li class="list-group-item"><a class="text-decoration-none text-black" asp-area="" asp-controller="Technician" asp-action="List">Manage Technicians</a></li>
+			<li class="list-group-item"><a class="text-decoration-none text-black" asp-area="" asp-controller="Customer" asp-action="List">Manage Customers</a></li>
+			<li class="list-group-item"><a class="text-decoration-none text-black" asp-area="" asp-controller="Incident" asp-action="List">Manage Incidents</a></li>
+			<li class="list-group-item"><a class="text-decoration-none text-black" asp-area="" asp-controller="Registration" asp-action="Index">Manage Registrations</a></li>
+		</ul>
+	</section>
+</div>
+<div>
+	<h1 class="mb-3">
+		Technicians
+	</h1>
+	<section>
+		<ul class="list-group">
+			<li class="list-group-item"><a class="text-decoration-none text-black" asp-area="" asp-controller="TechIncident" asp-action="Index">Update Incident</a></li>
+		</ul>
+	</section>
+</div>

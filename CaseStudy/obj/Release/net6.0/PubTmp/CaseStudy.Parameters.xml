@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="SportsProDemoApp" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\jmand\\OneDrive\\Desktop\\MVC\ Practice\\CaseStudy\\CaseStudy\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="CaseStudy.Models.DataAccess.SportsProContext" description="" value="Data Source=tcp:casestudydbserver.database.windows.net,1433;Initial Catalog=CaseStudy_db;User Id=jmandelmvp@casestudydbserver;Password=Jm21jm06jm54" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\jmand\\OneDrive\\Desktop\\MVC\ Practice\\CaseStudy\\CaseStudy\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\CaseStudy\.Models\.DataAccess\.SportsProContext\.sql$" />
+  </parameter>
+</parameters>

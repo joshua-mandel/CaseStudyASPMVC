@@ -1,0 +1,12 @@
+﻿@model Incident
+@{
+	ViewData["Title"] = "Delete Incident";
+}
+
+<h2 class="mb-3">Delete Incident</h2>
+<form asp-action="Delete">
+	<input type="hidden" asp-for="IncidentId" />
+	<p>Do you really want to delete: <br /> <strong>@Model.Title</strong></p>
+	<button type="submit" class="btn btn-danger">Yes</button>
+	<a asp-action="List" asp-controller="Incident" class="btn btn-secondary">No</a>
+</form>

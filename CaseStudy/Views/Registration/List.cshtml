@@ -1,0 +1,50 @@
+﻿@model RegistrationViewModel
+
+@{
+	ViewData["Title"] = "Configure Registrations";
+}
+
+<div class="mb-3">
+	<h2>Customer: @Model.Customer.FullName</h2>
+	<h2>Registrations</h2>
+</div>
+
+@if(Model.Customer.Products.Count() == 0)
+{
+	<h4 class="bg-secondary rounded text-white text-center p-3">This customer has no products associated with them.</h4>
+} else
+{
+	<form asp-action="Delete" method="post">
+		<input type="hidden" asp-for="@Model.Customer.CustomerId" />
+		<div asp-validation-summary="All" class="text-danger"></div>
+		<table class="table table-bordered table-striped mt-2">
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (Product product in Model.Customer.Products)
+				{
+					<tr>
+						<td>@product.ProductName</td>
+						<td>
+							<button type="submit" name="id" value="@product.ProductId" class="btn btn-primary">Delete</button>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</form>
+}
+
+
+<h2>Product</h2>
+<form asp-action="Add" method="post">
+	<input type="hidden" asp-for="@Model.Customer.CustomerId" />
+	<select asp-for="Product.ProductId" class="form-select mb-3" name="id" asp-items="@(new SelectList(Model.Products, "ProductId", "ProductName"))">
+		<option value="0">select a product</option>
+	</select>
+	<button type="submit" class="btn btn-primary">Select</button>
+</form>

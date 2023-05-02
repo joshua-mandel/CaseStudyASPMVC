@@ -1,0 +1,126 @@
+﻿@{
+	string c = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+	string a = ViewContext.RouteData.Values["action"]?.ToString() ?? "";
+}
+
+@using Microsoft.AspNetCore.Identity
+@using CaseStudy.Models
+@inject SignInManager<User> signInManager
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - SportsPro</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" crossorigin="anonymous" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/CaseStudy.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
+            <div class="container-xxl">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SportsPro</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link @(c == "Home" && a == "Index" ? "active" : "")" asp-area="" asp-controller="Home" asp-action="Index">
+                                <span class="fas fa-home"></span> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(c == "Product" ? "active" : "")" asp-area="" asp-controller="Product" asp-action="List">
+                                <span class="fas fa-box-open"></span> Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(c == "Technician" ? "active" : "")" asp-area="" asp-controller="Technician" asp-action="List">
+                                <span class="fas fa-wrench"></span> Technicians
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(c == "Customer" ? "active" : "")" asp-area="" asp-controller="Customer" asp-action="List">
+                                <span class="fas fa-users"></span> Customers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(c == "Incident" ? "active" : "")" asp-area="" asp-controller="Incident" asp-action="List">
+                                <span class="fas fa-exclamation-triangle"></span> Incidents
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(c == "Registration" ? "active" : "")" asp-area="" asp-controller="Registration" asp-action="Index">
+                                <span class="fas fa-clipboard"></span> Registrations
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="ChangePassword" asp-controller="Account" asp-area="">
+                                    <span class="fas fa-key"></span> Change Password
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="post" asp-action="Logout" asp-controller="Account" asp-area="">
+                                    <input type="submit" value="Log Out" class="btn btn-outline-light" />
+                                    <span class="text-light">Welcome, @User.Identity?.Name</span>
+                                </form>
+                            </li>
+                        }
+						else
+						{
+							// get current action
+							var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+							// anonymous user - Register link and log in button
+							<li class="nav-item">
+								<a asp-action="Register" asp-controller="Account" asp-area="" class="nav-link @(c == "Register" ? "active" : "")">Register</a>
+							</li>
+							<li class="nav-item">
+								<a asp-action="Login" asp-controller="Account" asp-area="" class="btn btn-outline-light">Log In</a>
+							</li>
+						}
+						<li class="nav-item">
+							<a class="nav-link  
+							@(c == "About" ? "active" : "")
+							" asp-area="" asp-controller="About" asp-action="About">About</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section class="container-md">
+		<main role="main" class="pb-3">
+			@if (TempData.Keys.Contains("message"))
+			{
+				<h4 class="bg-success p-2 text-center text-white rounded-3">@TempData["message"]</h4>
+			}
+		</main>
+
+	</section>
+	<div class="container-xxl">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted">
+		<div class="container-xxl">
+			&copy; 2023 - SportsPro
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

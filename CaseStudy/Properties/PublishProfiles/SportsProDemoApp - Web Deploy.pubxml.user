@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAApTcotgLPvE22HWCSe1TXGgAAAAACAAAAAAAQZgAAAAEAACAAAACBUaApSRHtYiLLwAY59KMSQc2Yys7zDz32uzvGgQe0fwAAAAAOgAAAAAIAACAAAABsjZU64C03LXwuVi9uPrKz6ZqAfLT++mtnuj+Ev8ogq4AAAABs95C9UAN11NhlwzWSMuRd16LIx5+jv7CIuvVBAWl4OXbdrTCNqX9BcmwcHCKXWr+50vD/tYoqkfC13R3NxP7k0GUmRLJD3TrEF3lXTS+zd+39/EqZGaxWLaGAKTClssypE1eG4ZLy9BnQc5aQXzMQM4Gu7gx5RS9UMXp5Y43ruEAAAADVFZ5Jm+HaTLZhEZ39mr0MHA9CZlZ41sHWASqYyziBcBEbV0+q6dS4Wwc/np827Z0t8gxzlSFuyFogCE7Peuc+</EncryptedPassword>
+    <History>True|2023-04-26T19:03:10.0329861Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="SportsProContext">
+      <Value>Data Source=tcp:casestudydbserver.database.windows.net,1433%3bInitial Catalog=CaseStudy_db%3bUser Id=jmandelmvp%40casestudydbserver%3bPassword=Jm21jm06jm54</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="CaseStudy.Models.DataAccess.SportsProContext">
+      <Value>Data Source=tcp:casestudydbserver.database.windows.net,1433%3bInitial Catalog=CaseStudy_db%3bUser Id=jmandelmvp%40casestudydbserver%3bPassword=Jm21jm06jm54</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

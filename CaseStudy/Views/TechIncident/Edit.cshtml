@@ -1,0 +1,72 @@
+﻿@model TechnicianIncidentViewModel
+@{
+    ViewBag.Title = "Edit Incident";
+}
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h1>@ViewBag.Title </h1>
+
+<form asp-action="Edit" method="post">
+    <div class="row mb-1">
+        <label class="col-form-label col-md-3">Technician:</label>
+        <div class="col">
+            <label>@Model.Technician.TechnicianName</label>
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <label class="col-form-label col-md-3">Customer:</label>
+        <div class="col">
+            <label>@Model.Incident.Customer.FullName</label>
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <label class="col-form-label col-md-3">Product:</label>
+        <div class="col">
+            <label>@Model.Incident.Product.ProductName</label>
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <label class="col-form-label col-md-3">Title:</label>
+        <div class="col">
+            <label>@Model.Incident.Title</label>
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <label class="col-form-label col-md-3">Date Opened:</label>
+        <div class="col">
+            <label>@Model.Incident.DateOpened.ToShortDateString()</label>
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <label asp-for="Incident.Description" class="col-form-label col-md-3">Description:</label>
+        <div class="col">
+            <textarea asp-for="Incident.Description" class="form-control">@Model.Incident.Description</textarea>
+        </div>
+    </div>
+
+    <div class="row mb-1">
+        <label asp-for="Incident.DateClosed" class="col-form-label col-md-3">Date Closed:</label>
+        <div class="col">
+            <input asp-for="Incident.DateClosed" class="form-control">
+        </div>
+    </div>
+
+    <input type="hidden" asp-for="Incident.IncidentId" />
+
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-action="List" asp-route-id="@Model.Technician.TechnicianId" class="btn btn-secondary">Cancel</a>
+        </div>
+
+    </div>
+</form>
